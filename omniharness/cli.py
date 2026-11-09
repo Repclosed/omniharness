@@ -24,6 +24,9 @@ def main() -> None:
 
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
+    # Init subcommand
+    subparsers.add_parser("init", help="Initialize workspace memory and harness environment")
+
     # Compress subcommand
     compress_parser = subparsers.add_parser("compress", help="Compress text or log output to save tokens")
     compress_parser.add_argument("file", nargs="?", help="File to compress (reads from stdin if omitted)")
@@ -62,7 +65,18 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    if args.command == "compress":
+    if args.command == "init":
+        engine = MemoryEngine()
+        engine.rebuild_index()
+        console.print(Panel(
+            f"[bold green]OmniHarness Initialized Successfully![/bold green]\n"
+            f"Memory Directory: {engine.memory_dir}\n"
+            f"Index File: {engine.memory_dir / 'MEMORY.md'}",
+            title="OmniHarness Init",
+            border_style="green"
+        ))
+
+    elif args.command == "compress":
         if args.file:
             path = Path(args.file)
             if not path.exists():
