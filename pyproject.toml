@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omniharness"
+version = "0.1.0"
+description = "Lightweight performance & token-reduction harness for Claude Code and coding agents"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "OmniHarness" },
+]
+keywords = [
+    "token-optimization",
+    "context-compression",
+    "ai-agents",
+    "claude-code",
+    "developer-tools",
+    "llm",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Text Processing",
+]
+dependencies = [
+    "rich>=13.7.0",
+]
+
+[project.scripts]
+omniharness = "omniharness.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/repclosed/omniharness"
+Repository = "https://github.com/repclosed/omniharness"
+Issues = "https://github.com/repclosed/omniharness/issues"
+
+[tool.setuptools]
+packages = ["omniharness"]
